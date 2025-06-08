@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm sản phẩm mới</title>
+</head>
+<body>
+    <h1>Thêm sản phẩm mới</h1>
+
+    <form action="#" th:action="@{/products/create}" th:object="${product}" method="post">
+        <p>Tên sản phẩm: <input type="text" th:field="*{name}" required/></p>
+        <p>Giá sản phẩm: <input type="number" step="0.01" th:field="*{price}" required/></p>
+        <p>Mô tả: <textarea th:field="*{description}" required></textarea></p>
+        <p>Nhà sản xuất: <input type="text" th:field="*{manufacturer}" required/></p>
+        <button type="submit">Lưu</button>
+        <a th:href="@{/products}">Hủy</a>
+    </form>
+</body>
+</html>
