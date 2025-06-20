@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Thư viện sách</title>
+</head>
+<body>
+<h1>📚 Danh sách sách</h1>
+<table border="1">
+    <tr>
+        <th>Tên sách</th>
+        <th>Số lượng còn</th>
+        <th>Hành động</th>
+    </tr>
+    <tr th:each="book : ${books}">
+        <td th:text="${book.title}">Tên</td>
+        <td th:text="${book.quantity}">0</td>
+        <td>
+            <a th:href="@{/books/{id}/borrow-page(id=${book.id})}">Mượn</a>
+        </td>
+    </tr>
+</table>
+
+<hr>
+<a th:href="@{/books/return-page}">🔁 Trả sách</a>
+</body>
+</html>
