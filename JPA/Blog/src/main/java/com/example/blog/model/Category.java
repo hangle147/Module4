@@ -1,10 +1,19 @@
 package com.example.blog.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
+@Table(name = "categories")
 public class Category {
 
     @Id
@@ -15,24 +24,4 @@ public class Category {
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<Blog> blogs;
-
-
-    public Category() {
-    }
-
-    public Category(String name) {
-        this.name = name;
-    }
-
-    public Long getId() { return id; }
-
-    public void setId(Long id) { this.id = id; }
-
-    public String getName() { return name; }
-
-    public void setName(String name) { this.name = name; }
-
-    public List<Blog> getBlogs() { return blogs; }
-
-    public void setBlogs(List<Blog> blogs) { this.blogs = blogs; }
 }

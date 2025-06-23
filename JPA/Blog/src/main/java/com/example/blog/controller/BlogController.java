@@ -77,13 +77,20 @@ public class BlogController {
     public String search(@RequestParam String keyword, Model model) {
         List<Blog> blogs = blogService.searchByTitle(keyword);
         model.addAttribute("blogPage", blogs);
-        return "blog/list.html";
+        return "blog/_table :: tableFragment";
+    }
+
+    @GetMapping("/load")
+    public String loadMore(@RequestParam int page, Model model) {
+        Page<Blog> blogPage = blogService.findAll(PageRequest.of(page, 5));
+        model.addAttribute("blogPage", blogPage.getContent());
+        return "blog/_table :: tableFragment";
     }
 
     @GetMapping("/category/{id}")
     public String viewByCategory(@PathVariable Long id, Model model) {
         List<Blog> blogs = blogService.findByCategoryId(id);
         model.addAttribute("blogPage", blogs);
-        return "blog/list.html";
+        return "blog/list";
     }
 }

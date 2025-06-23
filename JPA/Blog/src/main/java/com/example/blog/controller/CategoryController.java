@@ -17,13 +17,13 @@ public class CategoryController {
     @GetMapping
     public String listCategories(Model model) {
         model.addAttribute("categories", categoryService.findAll());
-        return "templates/category/list.html";
+        return "category/list.html";
     }
 
     @GetMapping("/create")
     public String showCreateForm(Model model) {
-        model.addAttribute("templates/category", new Category());
-        return "templates/category/create";
+        model.addAttribute("category", new Category());
+        return "category/create";
     }
 
     @PostMapping("/create")
@@ -34,8 +34,8 @@ public class CategoryController {
 
     @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable Long id, Model model) {
-        model.addAttribute("templates/category", categoryService.findById(id));
-        return "templates/category/edit";
+        model.addAttribute("category", categoryService.findById(id));
+        return "category/edit";
     }
 
     @PostMapping("/edit")
