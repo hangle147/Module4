@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title th:replace="~{::title}">Shopping Cart</title>
+</head>
+<body>
+<header>
+  <a href="/shop">Shop</a> |
+  <a href="/shopping-cart">Your Cart</a>
+</header>
+
+<div th:replace="~{::section}">Main Content</div>
+
+<footer>
+  <p>&copy; 2025 Shopping Cart</p>
+</footer>
+</body>
+</html>
